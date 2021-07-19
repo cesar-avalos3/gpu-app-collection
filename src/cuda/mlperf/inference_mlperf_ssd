@@ -1,0 +1,13 @@
+#!/bin/sh
+# DATA_DIR and MODEL_DIR must be set;
+
+BASE_MLPERF_DIR=$GPUAPPS_ROOT/bin/$CUDA_VERSION/release/mlperf_inference/inference/
+SSD_DIR=$BASE_MLPERF_DIR/vision/classification_and_detection/
+
+export DATA_DIR=$SSD_DIR/cocos/cocos-300-300
+
+if $2 == 1200; then
+    export DATA_DIR=$SSD_DIR/cocos/cocos-1200-1200
+fi
+
+cd $SSD_DIR; . $BASE_MLPERF_DIR/virtual_environment/bin/activate; . run_local.sh pytorch ssd gpu --count 2048 --scenario Offline -max-batchsize 16 --accuracy
