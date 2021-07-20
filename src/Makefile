@@ -338,10 +338,12 @@ heterosync:
 mlperf:
 	mkdir -p $(BINDIR)/$(BINSUBDIR)/
 	cp cuda/mlperf/install_mlperf_and_virtual_environments.sh $(BINDIR)/$(BINSUBDIR)/
+	cp cuda/mlperf/install_mlperf_and_virtual_environments_training.sh $(BINDIR)/$(BINSUBDIR)/
 	cp cuda/mlperf/inference* $(BINDIR)/$(BINSUBDIR)
-	cd $(BINDIR)/$(BINSUBDIR) && sh ./install_mlperf_and_virtual_environments.sh
+	chmod u+x $(BINDIR)/$(BINSUBDIR)/inference_mlperf_*
+	CTIMELOG=`date +%s`
+	cd $(BINDIR)/$(BINSUBDIR) && sh ./install_mlperf_and_virtual_environments.sh | tee $(BINDIR)/$(BINSUBDIR)/mlperf_install.log
 	cd $(BINDIR)/$(BINSUBDIR) && rm install_mlperf_and_virtual_environments.sh
-
 clean_heterosync:
 	rm -rf cuda/heterosync
 

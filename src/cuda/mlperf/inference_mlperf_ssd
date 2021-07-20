@@ -10,4 +10,4 @@ if $2 == 1200; then
     export DATA_DIR=$SSD_DIR/cocos/cocos-1200-1200
 fi
 
-cd $SSD_DIR; . $BASE_MLPERF_DIR/virtual_environment/bin/activate; . run_local.sh pytorch ssd gpu --count 2048 --scenario Offline -max-batchsize 16 --accuracy
+cd $SSD_DIR; . $BASE_MLPERF_DIR/virtual_environment/bin/activate; chmod u+x $SSD_DIR/run_local.sh; $SSD_DIR/run_local.sh pytorch ssd gpu --count 2048 --scenario Offline -max-batchsize 8 --accuracy; deactivate;

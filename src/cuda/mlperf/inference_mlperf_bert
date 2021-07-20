@@ -2,4 +2,4 @@
 BASE_MLPERF_DIR=$GPUAPPS_ROOT/bin/$CUDA_VERSION/release/mlperf_inference/inference/
 BERT_DIR=$BASE_MLPERF_DIR/language/bert/
 
-cd $BERT_DIR ; . $BASE_MLPERF_DIR/virtual_environment/bin/activate; python -u run.py --backend pytorch
+cd $BERT_DIR; . $BASE_MLPERF_DIR/virtual_environment/bin/activate; python -u run.py --backend pytorch; deactivate;
